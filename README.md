@@ -16,18 +16,18 @@ Included in the repository is an example of using the monitoring-toolbox to pull
 
 
 - For plotting historical data, contains Haver tickers organized by national accounts components (the lhs variables of interest for forecasting growth)
-![](images/historical_data_definitions_example.png)
+![](images/historical_data_definitions_example.PNG)
 - For running OLS regressions, contains regression and lag structure
-![](images/regression_structure_example.png)
+![](images/regression_structure_example.PNG)
 
 ### Outputs
 
 **Reports**
 
 - Historical data plots and tables by national accounts component
-![](images/historical_data_report_example.png)
+![](images/historical_data_report_example.PNG)
 - Forecast Reports
-![](images/forecast_report_example.png)
+![](images/forecast_report_example.PNG)
 
 **Data**
 
