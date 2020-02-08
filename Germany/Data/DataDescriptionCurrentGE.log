@@ -1,0 +1,33 @@
+S134CVRT@EUDATA -- Germany: New Car Registrations (SWDA, Units) -- European Central Bank 
+E134C@EUDATA -- Germany: Consumer Confidence Indicator, Percent Balance (SA, %) -- European Commission 
+J134VIXT@EUDATA -- Germany: GVA: Industry excl Construction(SWDA, Mil.Ch.05.NAC) -- Statistical Office of the European Communities 
+J134VCST@EUDATA -- Germany: GVA: Construction(SWDA, Mil.Ch.05.NAC) -- Statistical Office of the European Communities 
+J134GVAT@EUDATA -- Germany: Gross Value Added (SWDA, Mil.Ch.05.NAC) -- Statistical Office of the European Communities 
+J134VAGT@EUDATA -- Germany: GVA: Agriculture, Forestry & Fishing(SWDA, Mil.Ch.05.NAC) -- Statistical Office of the European Communities 
+DESNCVQ@GERMANY -- Germany: GDP: Private Consumption (SWDA, 2005=100) -- Statistisches Bundesamt 
+DESTU47@GERMANY -- Germany: Retail Sales Volume excluding Motor Vehicles(SWDA, 2010=100) -- Statistisches Bundesamt 
+DESDDE@GERMANY -- Germany: IP: Electricity, Gas, Steam, Water, Sewer(SWDA, 2010=100) -- Statistisches Bundesamt 
+DESNFIEQ@GERMANY -- Germany: GDP: Fixed Investment: Equipment (SWDA, 2005=100) -- Statistisches Bundesamt 
+DESDY@GERMANY -- Germany: Industrial Production including Construction (SWDA, 2010=100) -- Bundesministerium fÅr Wirtschaft und Technologie 
+DESNXQ@GERMANY -- Germany: GDP: Total Exports (SWDA, 2005=100) -- Statistisches Bundesamt 
+DESIXT@GERMANY -- Germany: Exports of Goods (SA, Bil.Euros) -- Deutsche Bundesbank 
+DESNMQ@GERMANY -- Germany: GDP: Total Imports (SWDA, 2005=100) -- Statistisches Bundesamt 
+DESIMT@GERMANY -- Germany: Imports of Goods (SA, Bil.Euros) -- Deutsche Bundesbank 
+DESDZ@GERMANY -- Germany: Industrial Production excluding Construction(SWDA, 2010=100) -- Statistisches Bundesamt/Deutsche Bundesbank 
+DESDFF@GERMANY -- Germany: Industrial Production: Construction (SWDA, 2010=100) -- Statistisches Bundesamt/Deutsche Bundesbank 
+DESNGDPQ@GERMANY -- Germany: GDP: Gross Domestic Product (SWDA, 2005=100) -- Statistisches Bundesamt 
+S134M@MKTPMI -- Germany PMI: Manufacturing (SA, 50+=Expansion) -- Markit/BME 
+S134MG@MKTPMI -- Germany PMI: Manufacturing Output (SA, 50+=Expansion) -- Markit/BME 
+S134MO@MKTPMI -- Germany PMI: Manufacturing New Orders (SA, 50+=Expansion) -- Markit/BME 
+S134ME@MKTPMI -- Germany PMI: Manufacturing Employment (SA, 50+=Expansion) -- Markit/BME 
+S134MD@MKTPMI -- Germany PMI: Manufacturing Suppliers' Delivery Times (SA, 50+=Expansion) -- Markit/BME 
+S134MSP@MKTPMI -- Germany PMI: Manufacturing Stocks of Purchases (SA, 50+=Expansion) -- Markit/BME 
+S134MPI@MKTPMI -- Germany PMI: Manufacturing Input Prices(SA, 50+=Expansion) -- Markit/BME 
+S134MQP@MKTPMI -- Germany PMI: Manufacturing Quantity of Purchases (SA, 50+=Expansion) -- Markit/BME 
+S134MSF@MKTPMI -- Germany PMI: Manufacturing Stocks of Finished Goods (SA, 50+=Expansion) -- Markit/BME 
+S134MX@MKTPMI -- Germany PMI: Manufacturing New Export Orders (SA, 50+=Expansion) -- Markit/BME 
+S134MPO@MKTPMI -- Germany PMI: Manufacturing Output Prices (SA, 50+=Expansion) -- Markit/BME 
+S134MB@MKTPMI -- Germany PMI: Manufacturing Backlogs of Work (SA, 50+=Expansion) -- Markit/BME 
+S134OI@MKTPMI -- Germany: Manufacturing Orders to Inventories (SA, Ratio) -- Markit 
+S134M@PMI -- Germany PMI: Manufacturing (SA, 50+=Expansion) -- Markit/BME 
+S134S@PMI -- Germany PMI: Services Business Activity (SA, 50+=Expansion) -- Markit 

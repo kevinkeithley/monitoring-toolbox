@@ -1,0 +1,128 @@
+function printmmhistplot(component,s,d,cc)
+
+vars = s.(component)(1:end,1);
+v = cell(numel(vars),2);
+for i = 1 : numel(vars)
+    tmp = vars{i};
+    at = findstr('@',tmp);
+    sername = tmp(1:at-1); %series name
+    db = tmp(at+1:end); %database
+    vars{i} = [db '.' sername];
+end
+varopts = s.(component)(1:end,2);
+reportdate = datestr(now(),'yyyy-mm-dd');
+startdategraph = mm(2007,1); %user defined for function (auto date should be 2007 period 1)
+startdategraph_q = qq(2007,1);
+
+sty = struct();
+sty.axes.xgrid = 'on';
+sty.axes.ygrid = 'on';
+sty.line.linewidth = 1.5;
+sty.line.color = {'blue','red'};
+sty.line.linestyle = {'-','--'};
+sty.title.fontsize = 10;
+sty.legend.fontsize = 8;
+sty.legend.location = 'best';
+
+x = report.new([component ' ' reportdate],'orientation','portrait');
+
+for i=2:numel(vars)
+    var = ['d.' vars{i}];
+    ser = eval(var);
+    serend = get((ser),'enddate');
+    [monthnum,monthstring] = eval(sprintf('month(%s.userdata.EndDate)',var));
+    
+    ser_q = eval(sprintf('convert(%s,''Q'')',var));
+    ser_q_end = get(ser_q,'enddate');
+    remainder = mod(monthnum,3);
+    if remainder == 0
+        tablerange_q = (ser_q_end-6):ser_q_end;
+        tablerange_m = (serend-6):(serend);
+    else
+        tablerange_q = (ser_q_end-6):(ser_q_end+1);
+        tablerange_m = (serend-6):(serend+(3-remainder));
+    end
+    graphrange = startdategraph:(serend+1);
+    graphrange_q = startdategraph_q:ser_q_end;
+    
+    tmp_comment = get((ser),'comment');
+    [country,datadesc] = strtok(tmp_comment,':');
+    [colon,datadesc] = strtok(datadesc,' ');
+    [release,season] = strtok(datadesc,'(');
+    
+    x.figure([cc ': ' component ' Indicators'],'subplot',[5 1],'zeroline',true,'style',sty,'range',graphrange);
+    
+    datelastmod =  datestr(ser.userdata.DateTimeMod,'dd/mmm/yyyy');
+    enddate = datestr(ser.userdata.EndDate,'mmmyyyy');
+    shortsource = ser.userdata.ShortSource;
+    longsource = ser.userdata.LongSource;
+    
+    x.graph([release 'EndDate: ' enddate 'Date last modified: ' datelastmod 'Source: ' longsource],'legend',true); %add 'last update' data from Haver userdata
+    x.series('Level',ser);
+    
+    var_national = ['d.' vars{1}];
+    ser_national = eval(var_national);
+    ser_national_q = convert(ser_national,'Q');
+    
+    x.graph(varopts(i),'legend',true);
+    if strmatch(varopts(i),'diff')
+        x.series('% m/m',pct(ser));
+        x.series('% 3m/3m',100*((((ser+ser{-1}+ser{-2})/3)/((ser{-3}+ser{-4}+ser{-5})/3))-1));
+    elseif strmatch(varopts(i),'level')
+        x.series('Level',ser);
+        x.series('3mma',(ser+ser{-1}+ser{-2})/3);
+    else
+        %display some error message
+    end
+    
+    x.graph('vs National Accounts Component','legend',true,'range',graphrange_q);
+    if strmatch(varopts(i),'diff')
+        x.series('NAC %q/q (left)',pct(ser_national_q),'yAxis','left');
+        x.series('Indicator %q/q (right)',pct(ser_q),'yAxis','right');
+    elseif strmatch(varopts(i),'level')
+        x.series('NAC %q/q (left)',pct(ser_national_q),'yAxis','left');
+        x.series('Indicator Level (right)',ser_q,'yAxis','right');
+    else
+        %display some error message
+    end
+    
+    x.figure();
+    x.table('Monthly','range',tablerange_m,'decimal',1);
+    if strmatch(varopts(i),'diff')
+        x.series(' Level',ser);
+        x.series('% m/m',pct(ser));
+        x.series('% 3m/3m',100*((((ser+ser{-1}+ser{-2})/3)/((ser{-3}+ser{-4}+ser{-5})/3))-1));
+    elseif strmatch(varopts(i),'level')
+        x.series(' Level',ser);
+        x.series('3mma',(ser+ser{-1}+ser{-2})/3);
+    else
+        %error
+    end
+    
+    x.table('Quarterly','range',tablerange_q,'decimal',1);
+    if strmatch(varopts(i),'diff')
+        x.series('% (Q/Q)',pct(ser_q));
+    elseif strmatch(varopts(i),'level')
+        x.series('Level',ser_q);
+    else
+        %error
+    end
+    
+    x.clearpage();
+end
+
+x.publish([cc '_' component '_' reportdate '.pdf']);
+
+%make reports directory
+if ~exist('Reports','dir')
+    mkdir('Reports');
+end
+
+%make component directory
+if ~exist(['Reports\' component],'dir')
+    mkdir(['Reports\' component]);
+end
+
+movefile([cc '_' component '_' reportdate '.pdf'],[pwd '\Reports\' component]);
+
+end
